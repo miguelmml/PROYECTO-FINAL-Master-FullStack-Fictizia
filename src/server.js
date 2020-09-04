@@ -1,17 +1,14 @@
 const express = require('express')
-const path = require('path')
-const morgan = require('morgan')
-const fs = require('fs')
 const helmet = require('helmet')
+
+const { morganMiddleware } = require('./logs/logs.js')
 
 const app = express()
 
 // MIDDLEWARES
 app.use(helmet())
 // logger
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'), { flags: 'a' })
-app.use(morgan('common', { stream: accessLogStream }))
-
+app.use(morganMiddleware)
 app.use(express.static('public'))
 
 // RUTAS

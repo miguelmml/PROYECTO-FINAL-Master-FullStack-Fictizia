@@ -1,1 +1,57 @@
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}nav ul{list-style-type:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}img{display:block}video{display:block}a{text-decoration:none}div{box-sizing:border-box}
+
+body{
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+/* TODO: delete unnecessary bgc */
+
+/* Header styles */
+.mainHeader{
+  background-color: darkslategrey;
+  color: white;
+  font-size: 24px; 
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+.logo{
+  /* background-color:red; */
+  width: 15%;
+  font-size: 40px;
+  text-align: center;
+  line-height: 4.5rem;
+}
+.mainNav{
+  width: 60%;
+}
+.mainNav ul{
+  /* background-color:lime; */
+  height: 100%;
+  padding: 0 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mainNav__item{
+  /* background-color: red; */
+  padding: 1%;
+}
+.mainNav__item a{
+  color: white;
+}
+
+/*  main content / dinamic content with templates / just a wrapper */
+.mainContent{
+  background-color:skyblue;
+  min-height: 80vh;
+  border: 3px solid red;
+}
+
+/* footer */
+.mainFooter{
+  background-color: dodgerblue;
+  min-height: 10vh
+}
