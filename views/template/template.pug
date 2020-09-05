@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title Proyecto_final
+  link(href='../static/css/styles.css' rel='stylesheet')
+header.mainHeader
+  h1.logo APP
+  nav.mainNav
+    ul
+      li.mainNav__item
+        a(href='./rankings') Rankings
+      li.mainNav__item
+        a(href='./types') Types
+      li.mainNav__item
+        a(href='./platforms') Platforms
+      li.mainNav__item
+        a(href='./account') Account
+      li.mainNav__item
+        input(type='text' id="searchItem")
+        a(href='./search/:id' id="search") 🔍
+main#contents.mainContent
+  block content
+footer.mainFooter
+script(src='../static/js/main.js')

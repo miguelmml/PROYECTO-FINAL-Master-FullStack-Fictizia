@@ -9,32 +9,40 @@ const app = express()
 app.use(helmet())
 // logger
 app.use(morganMiddleware)
-app.use(express.static('public'))
+app.use('/static', express.static('public'))
 
-// RUTAS
+// Render engine
+app.set('view engine', 'pug')
+
+/**  RUTAS  **/
 app.get('/', (req, res) => {
   // response
-  res.send('home')
+  res.render('home')
 })
+
 app.get('/rankings', (req, res) => {
   // response
-  res.send('rankings')
+  res.render('rankings')
 })
+
 app.get('/types', (req, res) => {
   // response
-  res.send('types')
+  res.render('types')
 })
+
 app.get('/platforms', (req, res) => {
   // response
-  res.send('platforms')
+  res.render('platforms')
 })
-app.get('/myList_and_friends', (req, res) => {
+
+app.get('/account', (req, res) => {
   // response
-  res.send('my list and friends')
+  res.render('account')
 })
+
 app.get('/search/:id', (req, res) => {
   // response
-  res.send(`search ==> ${req.params.id}`)
+  res.render('search', { id: req.params.id })
 })
 
 module.exports = app
