@@ -1,3 +1,8 @@
-extends ./template/template
+extends ./templates/template
+
+append config
+  - currentPage = pages.account
+  - currentDescription = metaDescription.account
+
 block content
   h2 MY LIST AND FRIENDS

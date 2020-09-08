@@ -1,3 +1,8 @@
-extends ./template/template
+extends ./templates/template
+
+append config
+  - currentPage = pages.rankings
+  - currentDescription = metaDescription.rankings
+
 block content
   h2 RANKINGS

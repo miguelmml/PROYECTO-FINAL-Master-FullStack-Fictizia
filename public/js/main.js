@@ -6,6 +6,6 @@ btnSearch.addEventListener('click', (e) => {
   const searchItemId = document.getElementById('searchItem').value
 
   if (searchItemId !== '') {
-    window.location = `./search/${searchItemId}`
+    window.location = `../search/${searchItemId}`
   }
 })

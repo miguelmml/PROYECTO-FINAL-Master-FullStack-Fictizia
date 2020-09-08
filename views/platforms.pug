@@ -1,3 +1,8 @@
-extends ./template/template
+extends ./templates/template
+
+append config
+  - currentPage = pages.platforms
+  - currentDescription = metaDescription.platforms
+
 block content
   h2 PLATFORMS
