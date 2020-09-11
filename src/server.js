@@ -2,6 +2,7 @@ const express = require('express')
 const helmet = require('helmet')
 
 const { morganMiddleware } = require('./logs/logs.js')
+const { getAllRanking } = require('./db/store')
 
 const app = express()
 
@@ -20,19 +21,16 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-app.get('/rankings', (req, res) => {
+app.get('/rankings/:source', (req, res) => {
   // response
-  res.render('rankings')
+  const { source } = req.params
+  getAllRanking(source)
+    .then((data) => res.render('rankings', { data }))
 })
 
-app.get('/types', (req, res) => {
+app.get('/coming-soon', (req, res) => {
   // response
-  res.render('types')
-})
-
-app.get('/platforms', (req, res) => {
-  // response
-  res.render('platforms')
+  res.render('coming-soon')
 })
 
 app.get('/account', (req, res) => {

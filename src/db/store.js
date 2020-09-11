@@ -1,27 +1,5 @@
 const mongoose = require('mongoose')
-
-const videogameSchema = new mongoose.Schema({
-  title: String,
-  rankNumber: Number,
-  img: String,
-  platform: String,
-  date: String,
-  description: String,
-  score: Number
-})
-
-const models = {
-  Allall: mongoose.model('allall-rank', videogameSchema),
-  Allyear: mongoose.model('allyear-rank', videogameSchema),
-  Ps4all: mongoose.model('ps4all-rank', videogameSchema),
-  Ps4year: mongoose.model('ps4year-rank', videogameSchema),
-  Xboxoneall: mongoose.model('xboxoneall-rank', videogameSchema),
-  Xboxoneyear: mongoose.model('xboxoneyear-rank', videogameSchema),
-  Switchall: mongoose.model('switchall-rank', videogameSchema),
-  Switchyear: mongoose.model('switchyear-rank', videogameSchema),
-  Pcall: mongoose.model('pcall-rank', videogameSchema),
-  Pcyear: mongoose.model('pcyear-rank', videogameSchema)
-}
+const { models, capitalized } = require('./models')
 
 const connectionDB = async () => {
   await mongoose.connect('mongodb://localhost:27017', {
@@ -52,7 +30,7 @@ const dropDB = async (collection) => {
 }
 
 const saveVideogame = async (model, obj) => {
-  const capitalizedModel = model[0].toUpperCase() + model.slice(1)
+  const capitalizedModel = capitalized(model)
   try {
     const videogame = new models[capitalizedModel]({
       title: obj.title,
@@ -70,12 +48,12 @@ const saveVideogame = async (model, obj) => {
   }
 }
 
-module.exports = { connectionDB, disconnectDB, dropDB, saveVideogame }
+const getAllRanking = async (model) => {
+  await connectionDB()
+  const data = await models[capitalized(model)].find().sort({ rankNumber: 1 })
+  console.log(data)
+  disconnectDB()
+  return data
+}
 
-// TODO:
-// async function getAll (model) {
-//   await connectionDB()
-//   const data = await models[model].find()
-//   console.log(data)
-// }
-// getAll('Ps4all')
+module.exports = { connectionDB, disconnectDB, dropDB, saveVideogame, getAllRanking }

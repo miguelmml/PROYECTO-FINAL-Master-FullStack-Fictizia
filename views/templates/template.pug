@@ -1,6 +1,8 @@
 block config
   include config
 
+include mixins
+
 doctype html
 head
   meta(charset='utf-8')
@@ -13,17 +15,19 @@ header.mainHeader
   nav.mainNav
     ul
       li.mainNav__item
-        a(href='../rankings') Rankings
+        a(href='../') Home
       li.mainNav__item
-        a(href='../types') Types
+        a(href='../rankings/Allall') Rankings
       li.mainNav__item
-        a(href='../platforms') Platforms
+        a(href='../coming-soon') Coming soon
       li.mainNav__item
         a(href='../account') Account
       li.mainNav__item
         input(type='text' id="searchItem")
         a(href='../search/:id' id="search") 🔍
 main#contents.mainContent
+  block contentInterface
   block content
 footer.mainFooter
 script(src='../static/js/main.js')
+block script

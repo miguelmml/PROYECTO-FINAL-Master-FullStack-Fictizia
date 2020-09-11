@@ -1,0 +1,9 @@
+mixin card(title, rankNumber, img, platform, date, description, score)
+  div.videogameCard
+    h3= title
+    p= rankNumber
+    p= score
+    p= platform
+    p= date
+    p= description
+    img(src= img)

@@ -4,5 +4,23 @@ append config
   - currentPage = pages.rankings
   - currentDescription = metaDescription.rankings
 
+block contentInterface
+  .mainContent__interface
+    h2 RANKINGS
+    select(id='platformSelect')
+      option(value='All' selected) All platforms
+      option(value='Ps4') Ps4
+      option(value='Xboxone') Xbox One
+      option(value='Pc') Pc
+      option(value='Switch') Switch
+    select(id='timeSelect')
+      option(value='all' selected) All time
+      option(value='year') Last year
+    button(id='searchRankingButton') Search
 block content
-  h2 RANKINGS
+  .mainContent__data
+    - const items = data
+    each item in items
+      +card(item.title, item.rankNumber, item.img, item.platform, item.date, item.description, item.score)
+block script
+  script(src='../static/js/rankings.js')
