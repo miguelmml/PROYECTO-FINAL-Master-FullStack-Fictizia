@@ -12,7 +12,6 @@ const platforms = ['all', 'ps4', 'xboxone', 'switch', 'pc']
 
 async function gameScraper (platform, time) {
   await db.dropDB(`${platform + time}-ranks`)
-  dropImagesDB()
 
   const { body } = await got(`https://www.metacritic.com/browse/games/score/metascore/${time}/${platform}/filtered`)
   const dom = new JSDOM(body)
@@ -28,10 +27,11 @@ async function gameScraper (platform, time) {
       date: i.querySelector('.clamp-summary-wrap > .clamp-details > span').textContent,
       description: i.querySelector('.clamp-summary-wrap > .summary').textContent.trim(),
       score: i.querySelector('.clamp-summary-wrap > .clamp-score-wrap > a > div').textContent,
-      img: `../static/img/${imageName}.jpg`
+      img: `/static/img/${imageName}.jpg`
     }
 
     setTimeout(function () { downloadImage(url, imageName) }, 1000)
+
     db.saveVideogame(`${platform + time}`, videogame)
   })
   console.log(`${platform + time}-ranks refilled`)
@@ -39,6 +39,9 @@ async function gameScraper (platform, time) {
 
 (async function initScraper () {
   await db.connectionDB()
+
+  dropImagesDB()
+
   platforms.forEach((item) => {
     gameScraper(item, times[0])
     gameScraper(item, times[1])

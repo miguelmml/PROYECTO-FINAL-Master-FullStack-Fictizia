@@ -5,7 +5,7 @@ const path = require('path')
 const downloadImage = (url, filename) => {
   const options = {
     url: url,
-    dest: `../public/img/${filename}.jpg`,
+    dest: `./public/img/${filename}.jpg`,
     extractFilename: false
   }
 
@@ -17,11 +17,11 @@ const downloadImage = (url, filename) => {
 }
 
 const dropImagesDB = () => {
-  fs.readdir('../public/img')
+  fs.readdir('./public/img')
     .then(files => {
       if (files !== null) {
         files.map(file => {
-          const filePath = path.join('../public/img', file)
+          const filePath = path.join('./public/img', file)
           return fs.unlink(filePath)
         })
       }
