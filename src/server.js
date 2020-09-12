@@ -2,7 +2,7 @@ const express = require('express')
 const helmet = require('helmet')
 
 const { morganMiddleware } = require('./logs/logs.js')
-const { getAllRanking } = require('./db/store')
+const { getAllRanking, getComingSoon } = require('./db/store')
 
 const app = express()
 
@@ -30,7 +30,8 @@ app.get('/rankings/:source', (req, res) => {
 
 app.get('/coming-soon', (req, res) => {
   // response
-  res.render('coming-soon')
+  getComingSoon()
+    .then((data) => res.render('coming-soon', { data }))
 })
 
 app.get('/account', (req, res) => {

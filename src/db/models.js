@@ -20,7 +20,8 @@ const models = {
   Switchall: mongoose.model('switchall-rank', videogameSchema),
   Switchyear: mongoose.model('switchyear-rank', videogameSchema),
   Pcall: mongoose.model('pcall-rank', videogameSchema),
-  Pcyear: mongoose.model('pcyear-rank', videogameSchema)
+  Pcyear: mongoose.model('pcyear-rank', videogameSchema),
+  Coming_soon: mongoose.model('coming_soon', videogameSchema)
 }
 
 const capitalized = (text) => {

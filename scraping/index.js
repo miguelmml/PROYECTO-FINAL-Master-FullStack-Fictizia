@@ -10,7 +10,7 @@ const { downloadImage, dropImagesDB } = require('./downloadImg')
 const times = ['all', 'year']
 const platforms = ['all', 'ps4', 'xboxone', 'switch', 'pc']
 
-async function gameScraper (platform, time) {
+async function gameRankingScraper (platform, time) {
   await db.dropDB(`${platform + time}-ranks`)
 
   const { body } = await got(`https://www.metacritic.com/browse/games/score/metascore/${time}/${platform}/filtered`)
@@ -36,15 +36,41 @@ async function gameScraper (platform, time) {
   })
   console.log(`${platform + time}-ranks refilled`)
 }
+async function comingSoonScraper () {
+  await db.dropDB('coming_soons')
+
+  const { body } = await got('https://www.metacritic.com/browse/games/release-date/coming-soon/all/date')
+  const dom = new JSDOM(body)
+
+  Array.from(dom.window.document.querySelectorAll('tr')).filter(i => i.classList.value !== 'spacer').map(i => {
+    const imageName = uuidv4()
+    const url = i.querySelector('.clamp-image-wrap > a > img').src
+
+    const videogame = {
+      title: i.querySelector('.clamp-summary-wrap > a > h3').textContent,
+      platform: i.querySelector('.clamp-summary-wrap > .clamp-details > .platform > .data').textContent.trim(),
+      date: i.querySelector('.clamp-summary-wrap > .clamp-details > span').textContent,
+      description: i.querySelector('.clamp-summary-wrap > .summary').textContent.trim(),
+      img: `/static/img/${imageName}.jpg`
+    }
+
+    setTimeout(function () { downloadImage(url, imageName) }, 1000)
+
+    db.saveVideogame('coming_soon', videogame)
+  })
+  console.log('coming_soon collection refilled')
+}
 
 (async function initScraper () {
   await db.connectionDB()
 
   dropImagesDB()
 
+  comingSoonScraper()
+
   platforms.forEach((item) => {
-    gameScraper(item, times[0])
-    gameScraper(item, times[1])
+    gameRankingScraper(item, times[0])
+    gameRankingScraper(item, times[1])
   })
   // TODO:disconnect ddbb after scraping
 })()

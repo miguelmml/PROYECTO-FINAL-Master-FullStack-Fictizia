@@ -56,4 +56,13 @@ const getAllRanking = async (model) => {
   return data
 }
 
-module.exports = { connectionDB, disconnectDB, dropDB, saveVideogame, getAllRanking }
+const getComingSoon = async () => {
+  await connectionDB()
+  const data = await models.Coming_soon.find().sort({ platform: 1 })
+  console.log(data)
+  disconnectDB()
+  return data
+}
+
+
+module.exports = { connectionDB, disconnectDB, dropDB, saveVideogame, getAllRanking, getComingSoon }

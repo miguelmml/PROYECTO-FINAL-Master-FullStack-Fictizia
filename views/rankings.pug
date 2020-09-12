@@ -21,6 +21,6 @@ block content
   .mainContent__data
     - const items = data
     each item in items
-      +card(item.title, item.rankNumber, item.img, item.platform, item.date, item.description, item.score)
+      +card(item.title, item.img, item.platform, item.date, item.description, item.score, item.rankNumber)
 block script
   script(src='../static/js/rankings.js')
