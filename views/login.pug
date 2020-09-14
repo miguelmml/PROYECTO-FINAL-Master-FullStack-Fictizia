@@ -1,0 +1,16 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  meta(name='description' content='Inicio de sesion y registro de la aplicación')
+  title= 'Login » VideoGamesAPP'
+  link(href='/static/css/styles.css' rel='stylesheet')
+body
+  main#contents.mainContent
+    h2 login page  
+    input(type='text' id='loginEmail' placeholder='email')
+    input(type='text' id='loginPassword' placeholder='password')
+    button(id='btnLogin') Login
+    a(href='/signUp') Sign Up
+    .infoLogin#infoLogin
+  script(src='/static/js/login.js')

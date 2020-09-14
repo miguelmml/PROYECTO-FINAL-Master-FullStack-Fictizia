@@ -13,7 +13,9 @@ const downloadImage = (url, filename) => {
     .then(({ filename }) => {
       console.log('Saved to', filename)
     })
-    .catch((err) => console.error(err))
+    .catch((err) => {
+      console.error(`Error at downloadImage function -> ${err}`)
+    })
 }
 
 const dropImagesDB = () => {
@@ -26,6 +28,7 @@ const dropImagesDB = () => {
         })
       }
     })
+    .then(console.log('imagesDB dropped'))
 }
 
 module.exports = { downloadImage, dropImagesDB }

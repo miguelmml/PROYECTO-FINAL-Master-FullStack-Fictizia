@@ -10,24 +10,14 @@ head
   meta(name='description' content=`${currentDescription}`)
   title= `${siteName} » ${currentPage}`
   link(href='/static/css/styles.css' rel='stylesheet')
-header.mainHeader
-  h1.logo APP
-  nav.mainNav
-    ul
-      li.mainNav__item
-        a(href='/') Home
-      li.mainNav__item
-        a(href='/rankings/Allall') Rankings
-      li.mainNav__item
-        a(href='/coming-soon') Coming soon
-      li.mainNav__item
-        a(href='/account') Account
-      li.mainNav__item
-        input(type='text' id="searchItem")
-        a(href='/search/:id' id="search") 🔍
-main#contents.mainContent
-  block contentInterface
-  block content
-footer.mainFooter
-script(src='/static/js/main.js')
-block script
+body
+  include menu
+
+  main#contents.mainContent
+    block contentInterface
+    block content
+
+  footer.mainFooter
+  
+  script(src='/static/js/main.js')
+  block script

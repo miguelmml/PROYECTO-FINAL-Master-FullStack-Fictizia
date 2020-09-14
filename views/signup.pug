@@ -1,0 +1,17 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  meta(name='description' content='Inicio de sesion y registro de la aplicación')
+  title= 'Sign Up » VideoGamesAPP'
+  link(href='/static/css/styles.css' rel='stylesheet')
+body
+  main#contents.mainContent
+    h2 sign up page  
+    input(type='text' id='signUpName' placeholder='name')
+    input(type='text' id='signUpEmail' placeholder='email')
+    input(type='text' id='signUpPassword' placeholder='password')
+    input(type='text' id='signUpPassword__check' placeholder='repeat your password')
+    button(id='btnSignUp') signUp
+    .infosignUp#infosignUp
+  script(src='/static/js/signUp.js')
