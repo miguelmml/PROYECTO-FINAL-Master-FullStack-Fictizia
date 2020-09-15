@@ -11,6 +11,6 @@ block content
   .mainContent__data
     - const items = data
     each item in items
-      +card(item.title, item.img, item.platform, item.date, item.description, item.score, item.rankNumber)
+      +comingSoonCard(item.title, item.img, item.platform, item.date, item.description)
 block script
   script(src='/static/js/coming-soon.js')
