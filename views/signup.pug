@@ -9,9 +9,9 @@ body
   main#contents.mainContent
     h2 sign up page  
     input(type='text' id='signUpName' placeholder='name')
-    input(type='text' id='signUpEmail' placeholder='email')
-    input(type='text' id='signUpPassword' placeholder='password')
-    input(type='text' id='signUpPassword__check' placeholder='repeat your password')
+    input(type='email' id='signUpEmail' placeholder='email')
+    input(type='password' id='signUpPassword' placeholder='password')
+    input(type='password' id='signUpPassword__check' placeholder='repeat your password')
     button(id='btnSignUp') signUp
-    .infosignUp#infosignUp
+    .infoSignUp#infoSignUp
   script(src='/static/js/signUp.js')

@@ -1,9 +1,20 @@
 mixin card(title, img, platform, date, description, score, rankNumber)
   div.videogameCard
-    h3= title
-    p= rankNumber
-    p= score
-    p= platform
-    p= date
-    p= description
-    img(src= img)
+    h3.videogameCard__title= title
+    p.videogameCard__rankNumber= rankNumber
+    p.videogameCard__score= score
+    p.videogameCard__platform= platform
+    p.videogameCard__date= date
+    p.videogameCard__description= description
+    img(src= img class='videogameCard__image')
+    button.btnAddVideogame ADD TO MY LIST
+
+mixin myListCard(state, title, img, platform, date, description)
+  div.videogameCard
+    h3.videogameCard__title= title
+    p.videogameCard__state= state
+    p.videogameCard__platform= platform
+    p.videogameCard__date= date
+    p.videogameCard__description= description
+    img(src= img class='videogameCard__image')
+    button.btnDeleteVideogame DELETE TO MY LIST

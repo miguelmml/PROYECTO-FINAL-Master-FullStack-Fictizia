@@ -1,37 +1,62 @@
-
-if (document.head.querySelector('title').textContent === 'VideoGamesAPP » home') {
-  window.addEventListener('load', checkUser)
-}
+window.addEventListener('load', checkUser)
 
 function checkUser () {
-  const token = localStorage.getItem('gamesAppToken')
-  if (!token) {
+  const user = localStorage.getItem('gamesAppUserName')
+  if (!user) {
     window.location.replace('/login')
   }
-  console.log(`/rankings/Allall/${token}`)
-  window.location.replace(`/rankings/Allall/${token}`)
+  if (document.head.querySelector('title').textContent === 'VideoGamesAPP » home') {
+    const token = localStorage.getItem('gamesAppToken')
+    window.location.replace(`/rankings/Allall/${token}`)
+  }
 }
 
-const links = document.querySelectorAll('.mainNav__item > a')
+(() => {
+  try {
+    const links = document.querySelectorAll('.mainNav__item > a')
 
-links.forEach((item) => {
-  console.log(item)
-  item.addEventListener('click', (e) => {
-    // e.preventDefault()
-    const token = localStorage.getItem('gamesAppToken')
-    item.href += `/${token}`
-    console.log(item.href)
-  })
-})
+    links.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (item.className === 'account') {
+          const user = localStorage.getItem('gamesAppUserEmail')
+          const token = localStorage.getItem('gamesAppToken')
+          item.href += `/${user}/${token}`
+        } else {
+          const token = localStorage.getItem('gamesAppToken')
+          item.href += `/${token}`
+        }
+      })
+    })
 
-// Search button handler
-const btnSearch = document.getElementById('search')
+    document.getElementById('logOut').addEventListener('click', () => {
+      localStorage.removeItem('gamesAppToken')
+      localStorage.removeItem('gamesAppUserName')
+      localStorage.removeItem('gamesAppUserEmail')
+      window.location.replace('/')
+    })
 
-btnSearch.addEventListener('click', (e) => {
-  e.preventDefault()
-  const searchItemId = document.getElementById('searchItem').value
+    const btnSearch = document.getElementById('search')
 
-  if (searchItemId !== '') {
-    window.location = `../search/${searchItemId}`
+    btnSearch.addEventListener('click', (e) => {
+      e.preventDefault()
+      const searchItemId = document.getElementById('searchItem').value
+
+      if (searchItemId !== '') {
+        window.location = `../search/${searchItemId}`
+      }
+    })
+  } catch (error) {
+    console.error(error)
   }
-})
+})();
+
+(() => {
+  try {
+    const name = localStorage.getItem('gamesAppUserName')
+    const email = localStorage.getItem('gamesAppUserEmail')
+    document.getElementById('currentUser').innerText = name
+    document.getElementById('currentUserEmail').innerText = email
+  } catch (error) {
+    console.error(error)
+  }
+})()

@@ -12,3 +12,5 @@ block content
     - const items = data
     each item in items
       +card(item.title, item.img, item.platform, item.date, item.description, item.score, item.rankNumber)
+block script
+  script(src='/static/js/coming-soon.js')

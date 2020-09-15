@@ -5,4 +5,10 @@ append config
   - currentDescription = metaDescription.account
 
 block content
-  h2 MY LIST AND FRIENDS
+  .mainContent__data
+    h2 My list
+    - const items = data
+    each item in items
+      +myListCard(item.state, item.title, item.img, item.platform, item.date, item.description)
+block script
+  script(src='/static/js/account.js')

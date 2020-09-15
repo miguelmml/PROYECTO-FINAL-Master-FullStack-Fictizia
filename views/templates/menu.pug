@@ -9,7 +9,11 @@ header.mainHeader
       li.mainNav__item
         a(href='/coming-soon') Coming soon
       li.mainNav__item
-        a(href='/account') Account
+        a(class='account' href='/account') Account
       li.mainNav__item
         input(type='text' id="searchItem")
         a(href='/search/:id' id="search") 🔍
+      li.mainNav__item
+        p#currentUser
+        p#currentUserEmail
+        button(id="logOut" class='logOut') Log Out

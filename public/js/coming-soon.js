@@ -1,19 +1,5 @@
 (() => {
   try {
-    const searchRankingButton = document.getElementById('searchRankingButton')
-
-    searchRankingButton.addEventListener('click', () => {
-      const source = document.getElementById('platformSelect').value + document.getElementById('timeSelect').value
-      const token = localStorage.getItem('gamesAppToken')
-      window.location.href = `../${source}/${token}`
-    })
-  } catch (error) {
-    console.error(error)
-  }
-})();
-
-(() => {
-  try {
     const btnAddVideogameList = document.querySelectorAll('.btnAddVideogame')
 
     btnAddVideogameList.forEach((item) => {
@@ -24,12 +10,10 @@
           email: currentUserEmail,
           videogame: {
             title: e.target.parentElement.querySelector('.videogameCard__title').textContent,
-            rankNumber: e.target.parentElement.querySelector('.videogameCard__rankNumber').textContent,
             img: e.target.parentElement.querySelector('.videogameCard__image').src,
             platform: e.target.parentElement.querySelector('.videogameCard__platform').textContent,
             date: e.target.parentElement.querySelector('.videogameCard__date').textContent,
-            description: e.target.parentElement.querySelector('.videogameCard__description').textContent,
-            score: e.target.parentElement.querySelector('.videogameCard__score').textContent
+            description: e.target.parentElement.querySelector('.videogameCard__description').textContent
           }
         }
 
@@ -44,7 +28,7 @@
             if (response.status === 200 && response.ok) {
               return
             }
-            throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at comming-soon add listeners function in rankings.js')
+            throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at comming-soon add listeners function in coming-soon.js')
           })
           .catch((err) => {
             console.error(err)

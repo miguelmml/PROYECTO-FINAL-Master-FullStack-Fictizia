@@ -1,10 +1,29 @@
-const btnSignUp = document.getElementById('btnSignUp')
+(() => {
+  try {
+    const btnSignUp = document.getElementById('btnSignUp')
 
-btnSignUp.addEventListener('click', () => {
-  const name = document.getElementById('signUpName').value
-  const email = document.getElementById('signUpEmail').value
-  const password = document.getElementById('signUpPassword').value
+    btnSignUp.addEventListener('click', () => {
+      const name = document.getElementById('signUpName').value
+      const email = document.getElementById('signUpEmail').value
+      const password = document.getElementById('signUpPassword').value
+      const passwordCheck = document.getElementById('signUpPassword__check').value
 
+      if (/^[A-Za-z]+[A-Za-z0-9-_]*@\w+\.[A-Za-z]+\.*[A-Za-z]*\.*[A-Za-z]*/.test(email)) {
+        if (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(password) && password === passwordCheck) {
+          postToSignUp(name, email, password)
+        } else {
+          document.getElementById('infoSignUp').textContent = '🚫 Invalid password or asswords do not match 🚫'
+        }
+      } else {
+        document.getElementById('infoSignUp').textContent = '🚫 Invalid Email 🚫'
+      }
+    })
+  } catch (error) {
+    console.error(error)
+  }
+})()
+
+function postToSignUp (name, email, password) {
   const data = {
     name: name,
     email: email,
@@ -21,19 +40,22 @@ btnSignUp.addEventListener('click', () => {
     .then((response) => {
       if (response.ok && response.status === 200) {
         return response.json()
-      } else if (response.status === 400) {
-        throw new Error()
       }
+      throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at account add listeners function in signUp.js')
     })
     .then((data) => {
-      console.log(data)
       const token = data.token
-      console.log(token, data.user)
+      const name = data.user.name
+      const email = data.user.email
+
       localStorage.setItem('gamesAppToken', token)
+      localStorage.setItem('gamesAppUserName', name)
+      localStorage.setItem('gamesAppUserEmail', email)
+
       window.location.replace(`/rankings/Allall/${token}`)
     })
     .catch((err) => {
-      console.error('error in post -> ', err)
-      document.getElementById('infoSignUp').textContent = 'signUp failed! Check authentication credentials'
+      console.error(err)
+      document.getElementById('infoSignUp').textContent = 'Sign Up failed! Check your data'
     })
-})
+}

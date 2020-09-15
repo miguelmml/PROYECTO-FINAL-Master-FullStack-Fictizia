@@ -11,7 +11,7 @@ async function gameRankingScraper (platform, time) {
   const { body } = await got(`https://www.metacritic.com/browse/games/score/metascore/${time}/${platform}/filtered`)
   const dom = new JSDOM(body)
 
-  await db.dropDB(`${platform + time}-ranks`)
+  await db.dropCollection(`${platform + time}-ranks`)
 
   Array.from(dom.window.document.querySelectorAll('tr')).filter(i => i.classList.value !== 'spacer').map(async i => {
     const imageName = uuidv4()

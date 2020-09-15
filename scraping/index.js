@@ -1,6 +1,6 @@
-const db = require('../src/db/store')
 const { dropImagesDB } = require('./downloadImges')
-const { gameRankingScraper, comingSoonScraper } = require('./scrapers');
+const { gameRankingScraper, comingSoonScraper } = require('./scrapers')
+const db = require('../src/db/store');
 
 (async function initScraper () {
   const times = ['all', 'year']

@@ -1,16 +1,24 @@
 const mongoose = require('mongoose')
 
 const videogameSchema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true,
+    trim: true
+  },
   rankNumber: Number,
   img: String,
-  platform: String,
+  platform: {
+    type: String,
+    required: true,
+    trim: true
+  },
   date: String,
   description: String,
   score: Number
 })
 
-const models = {
+const videogameModels = {
   Allall: mongoose.model('allall-rank', videogameSchema),
   Allyear: mongoose.model('allyear-rank', videogameSchema),
   Ps4all: mongoose.model('ps4all-rank', videogameSchema),
@@ -24,8 +32,4 @@ const models = {
   Coming_soon: mongoose.model('coming_soon', videogameSchema)
 }
 
-const capitalized = (text) => {
-  return text[0].toUpperCase() + text.slice(1)
-}
-
-module.exports = { models, capitalized }
+module.exports = videogameModels

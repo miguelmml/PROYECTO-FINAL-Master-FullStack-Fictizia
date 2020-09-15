@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -13,17 +12,22 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
-    validate: value => {
-      if (!validator.isEmail(value)) {
-        throw new Error({ error: 'Invalid Email address' })
-      }
-    }
+    lowercase: true
   },
   password: {
     type: String,
     required: true
   },
+  videogames: [{
+    state: { type: String, default: 'Pending to play' },
+    title: String,
+    rankNumber: Number,
+    img: String,
+    platform: String,
+    date: String,
+    description: String,
+    score: Number
+  }],
   tokens: [{
     token: {
       type: String,
@@ -42,10 +46,31 @@ userSchema.pre('save', async function (next) {
 
 userSchema.methods.generateAuthToken = async function () {
   const user = this
-  const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY)
-  user.tokens = user.tokens.concat({ token })
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY, { expiresIn: '1h' })
+  user.tokens = { token }
   await user.save()
   return token
+}
+
+userSchema.methods.saveVideogame = async function (videogame) {
+  const user = this
+  user.videogames.push(videogame)
+  await user.save()
+  return user.videogames
+}
+
+userSchema.methods.deleteVideogame = async function (title, platform) {
+  const user = this
+  let index = 0
+  const videogamesArray = user.videogames
+  videogamesArray.forEach(item => {
+    if (item.title === title && item.platform === platform) {
+      index = videogamesArray.indexOf(item)
+    }
+  })
+  user.videogames.splice(index, 1)
+  await user.save()
+  return user.videogames
 }
 
 userSchema.statics.findByCredentials = async (email, password) => {
@@ -56,6 +81,14 @@ userSchema.statics.findByCredentials = async (email, password) => {
   const isPasswordMatch = await bcrypt.compare(password, user.password)
   if (!isPasswordMatch) {
     throw new Error({ error: 'Invalid login credentials' })
+  }
+  return user
+}
+
+userSchema.statics.findByName = async (email) => {
+  const user = await User.findOne({ email })
+  if (!user) {
+    throw new Error({ error: 'User not found' })
   }
   return user
 }
