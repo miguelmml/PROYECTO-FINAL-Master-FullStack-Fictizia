@@ -5,13 +5,18 @@ head
   meta(name='description' content='Inicio de sesion y registro de la aplicación')
   title= 'Sign Up » VideoGamesAPP'
   link(href='/static/css/styles.css' rel='stylesheet')
+  link(href='/static/css/login.css' rel='stylesheet')
 body
-  main#contents.mainContent
-    h2 sign up page  
-    input(type='text' id='signUpName' placeholder='name')
-    input(type='email' id='signUpEmail' placeholder='email')
-    input(type='password' id='signUpPassword' placeholder='password')
-    input(type='password' id='signUpPassword__check' placeholder='repeat your password')
-    button(id='btnSignUp') signUp
-    .infoSignUp#infoSignUp
+  main#contents.loginSignUpContent
+    .loginSignUpContent__wrapper
+      .loginSignUpContent__welcome
+        h2 WELCOME
+        p Sign up or login to access the app
+      .loginSignUpContent__interface
+        input(type='text' id='signUpName' placeholder='name')
+        input(type='email' id='signUpEmail' placeholder='email')
+        input(type='password' id='signUpPassword' placeholder='password')
+        input(type='password' id='signUpPassword__check' placeholder='repeat your password')
+        button(id='btnSignUp') Sign Up
+        .infoLogin#infoLogin
   script(src='/static/js/signUp.js')

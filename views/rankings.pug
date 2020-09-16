@@ -4,9 +4,12 @@ append config
   - currentPage = pages.rankings
   - currentDescription = metaDescription.rankings
 
+block styles
+  link(href='/static/css/card.css' rel='stylesheet')
 block contentInterface
   .mainContent__interface
     h2 RANKINGS
+    h3 Top 100 videogames by platform
     select(id='platformSelect')
       option(value='All' selected) All platforms
       option(value='Ps4') Ps4

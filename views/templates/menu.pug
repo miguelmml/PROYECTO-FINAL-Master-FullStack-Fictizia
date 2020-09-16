@@ -1,5 +1,6 @@
 header.mainHeader
-  h1.logo APP
+  h1.logo Games
+    span.logo--rankingsWord Rankings
   nav.mainNav
     ul
       li.mainNav__item
@@ -7,8 +8,9 @@ header.mainHeader
       li.mainNav__item
         a(href='/coming-soon') Coming soon
       li.mainNav__item
-        a(class='account' href='/account') Account
-      li.mainNav__item
-        p#currentUser
-        p#currentUserEmail
-        button(id="logOut" class='logOut') Log Out
+        a(class='myList' href='/myList') My List
+      li.mainNav__item.mainNav__userInfo
+        p#currentUser.mainNav__userInfo--name
+        p#currentUserEmail.mainNav__userInfo--email
+        button(id="logOut" class='mainNav__userInfo--button') Log Out
+hr.body__spacer

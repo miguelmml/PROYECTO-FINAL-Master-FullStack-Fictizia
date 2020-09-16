@@ -6,13 +6,14 @@ const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    unique: true
   },
   email: {
     type: String,
     required: true,
-    unique: true,
-    lowercase: true
+    lowercase: true,
+    unique: true
   },
   password: {
     type: String,
@@ -52,10 +53,12 @@ userSchema.methods.generateAuthToken = async function () {
   return token
 }
 
-userSchema.methods.saveVideogame = async function (videogame) {
+userSchema.methods.saveVideogameInUser = async function (videogame) {
   const user = this
   user.videogames.push(videogame)
-  await user.save()
+  await user.save(function (err) {
+    if (err) console.error('Error in saveVideogamInUser', err)
+  })
   return user.videogames
 }
 

@@ -10,14 +10,16 @@ head
   meta(name='description' content=`${currentDescription}`)
   title= `${siteName} » ${currentPage}`
   link(href='/static/css/styles.css' rel='stylesheet')
+  block styles
 body
   include menu
 
   main#contents.mainContent
     block contentInterface
     block content
-
+    button#goTopBtn.goTopBtn
   footer.mainFooter
+    hr.body__spacer
   
   script(src='/static/js/main.js')
   block script

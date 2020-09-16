@@ -1,29 +1,50 @@
 mixin rankingsCard(title, img, platform, date, description, score, rankNumber)
-  div.videogameCard
-    h3.videogameCard__title= title
-    p.videogameCard__rankNumber= rankNumber
-    p.videogameCard__score= score
-    p.videogameCard__platform= platform
-    p.videogameCard__date= date
-    p.videogameCard__description= description
-    img(src= img class='videogameCard__image')
-    button.btnAddVideogame ADD TO MY LIST
+  .videogameCard__wrapper
+    .videogameCard__descriptionWrapper
+      p.videogameCard__description= `${description.slice(0,500).concat(' ...')}`
+    .videogameCard__circleWrapper
+      .videogameCard__imageWrapper
+        img(src= img class='videogameCard__image')
+      .videogameCard__rankAndButtonWrapper
+        button.btnAddVideogame ADD TO MY LIST
+        h3.videogameCard__rankNumber Rank 
+          span.videogameCard__rankNumber--number=rankNumber
+    .videogameCard__statsWrapper
+      p.videogameCard__title= title
+      p.videogameCard__rankNumber= `Rank: ${rankNumber}`
+      p.videogameCard__score Score: 
+        span.videogameCard__score--number= score
+      p.videogameCard__platform= `Platform: ${platform}`
+      p.videogameCard__date= `Date: ${date}`
+      
 
 mixin comingSoonCard(title, img, platform, date, description)
-  div.videogameCard
-    h3.videogameCard__title= title
-    p.videogameCard__platform= platform
-    p.videogameCard__date= date
-    p.videogameCard__description= description
-    img(src= img class='videogameCard__image')
-    button.btnAddVideogame ADD TO MY LIST
+  .videogameCard__wrapper
+    .videogameCard__descriptionWrapper
+      p.videogameCard__description= `${description.slice(0,500).concat(' ...')}`
+    .videogameCard__circleWrapper
+      .videogameCard__imageWrapper
+        img(src= img class='videogameCard__image')
+      .videogameCard__rankAndButtonWrapper
+        button.btnAddVideogame ADD TO MY LIST
+        p Coming Soon
+    .videogameCard__statsWrapper
+      p.videogameCard__title= title
+      p.videogameCard__platform= `Platform: ${platform}`
+      p.videogameCard__date= `Date: ${date}`
 
 mixin myListCard(state, title, img, platform, date, description)
-  div.videogameCard
-    h3.videogameCard__title= title
-    p.videogameCard__state= state
-    p.videogameCard__platform= platform
-    p.videogameCard__date= date
-    p.videogameCard__description= description
-    img(src= img class='videogameCard__image')
-    button.btnDeleteVideogame DELETE TO MY LIST
+  .videogameCard__wrapper
+      .videogameCard__descriptionWrapper
+        p.videogameCard__description= `${description.slice(0,500).concat(' ...')}`
+      .videogameCard__circleWrapper
+        .videogameCard__imageWrapper
+          img(src= img class='videogameCard__image')
+        .videogameCard__rankAndButtonWrapper
+          button.btnDeleteVideogame DELETE TO MY LIST
+          p Coming Soon
+      .videogameCard__statsWrapper
+        p.videogameCard__title= title
+        p.videogameCard__state= `State: ${state}`
+        p.videogameCard__platform= `Platform: ${platform}`
+        p.videogameCard__date= `Date: ${date}`

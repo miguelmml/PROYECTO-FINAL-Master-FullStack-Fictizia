@@ -22,7 +22,7 @@
           if (response.ok && response.status === 200) {
             return response.json()
           }
-          throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at account add listeners function in login.js')
+          throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at myList add listeners function in login.js')
         })
         .then((data) => {
           const token = data.token

@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-const videogameModels = require('./models/games')
-const User = require('./models/users')
+const videogameModels = require('./moongose_models/games')
+const User = require('./moongose_models/users')
 
 const connectionDB = () => {
   return new Promise((resolve, reject) => {
@@ -11,8 +11,10 @@ const connectionDB = () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     })
-      .then(resolve(console.log('- Successful database connection -')))
-      .catch((err) => { reject(console.error(`error at conecctionDB function -> ${err}`)) })
+      .then(() => {
+        resolve({ msg: '- Successful database connection -' })
+      })
+      .catch((error) => reject(error))
   })
 }
 

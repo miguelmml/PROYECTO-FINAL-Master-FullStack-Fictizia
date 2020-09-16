@@ -4,7 +4,7 @@ const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const { v4: uuidv4 } = require('uuid')
 
-const db = require('../src/db/store')
+const db = require('../models/store')
 const { downloadImage } = require('./downloadImges')
 
 async function gameRankingScraper (platform, time) {

@@ -19,17 +19,17 @@
     btnAddVideogameList.forEach((item) => {
       item.addEventListener('click', (e) => {
         const currentUserEmail = localStorage.getItem('gamesAppUserEmail')
-
+        const divFather = e.target.parentElement.parentElement.parentElement
         const data = {
           email: currentUserEmail,
           videogame: {
-            title: e.target.parentElement.querySelector('.videogameCard__title').textContent,
-            rankNumber: e.target.parentElement.querySelector('.videogameCard__rankNumber').textContent,
-            img: e.target.parentElement.querySelector('.videogameCard__image').src,
-            platform: e.target.parentElement.querySelector('.videogameCard__platform').textContent,
-            date: e.target.parentElement.querySelector('.videogameCard__date').textContent,
-            description: e.target.parentElement.querySelector('.videogameCard__description').textContent,
-            score: e.target.parentElement.querySelector('.videogameCard__score').textContent
+            title: divFather.querySelector('.videogameCard__title').textContent,
+            rankNumber: divFather.querySelector('.videogameCard__rankNumber--number').textContent,
+            img: divFather.querySelector('.videogameCard__image').src,
+            platform: divFather.querySelector('.videogameCard__platform').textContent,
+            date: divFather.querySelector('.videogameCard__date').textContent,
+            description: divFather.querySelector('.videogameCard__description').textContent,
+            score: divFather.querySelector('.videogameCard__score--number').textContent
           }
         }
 
@@ -54,4 +54,19 @@
   } catch (error) {
     console.error(error)
   }
+})();
+
+(() => {
+  const arr = document.querySelectorAll('.videogameCard__circleWrapper')
+
+  arr.forEach((item) => {
+    item.addEventListener('mouseover', (e) => {
+      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '0'
+      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '0'
+    })
+    item.addEventListener('mouseout', (e) => {
+      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '-100%'
+      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '-100%'
+    })
+  })
 })()

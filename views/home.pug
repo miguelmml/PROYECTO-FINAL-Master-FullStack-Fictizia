@@ -1,4 +1,7 @@
 extends ./templates/template
-
+block styles
+  link(href='/static/css/loadingAnimation.css' rel='stylesheet')
 block content
-  h2 HOME
+  .animationWrapper
+    .loadingAnimation 
+      p.loadingAnimation__text Loading...

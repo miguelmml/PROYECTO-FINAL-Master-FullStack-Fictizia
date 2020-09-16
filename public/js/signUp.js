@@ -41,7 +41,7 @@ function postToSignUp (name, email, password) {
       if (response.ok && response.status === 200) {
         return response.json()
       }
-      throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at account add listeners function in signUp.js')
+      throw new Error('fetch(POST)/response error // response.status != 200 or/and response.ok === false on first .then() at myList add listeners function in signUp.js')
     })
     .then((data) => {
       const token = data.token
@@ -56,6 +56,6 @@ function postToSignUp (name, email, password) {
     })
     .catch((err) => {
       console.error(err)
-      document.getElementById('infoSignUp').textContent = 'Sign Up failed! Check your data'
+      document.getElementById('infoSignUp').textContent = 'Sign Up failed! User or email already exists'
     })
 }

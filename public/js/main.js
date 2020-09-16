@@ -1,4 +1,5 @@
 window.addEventListener('load', checkUser)
+window.addEventListener('scroll', scrollFunction)
 
 function checkUser () {
   const user = localStorage.getItem('gamesAppUserName')
@@ -17,7 +18,7 @@ function checkUser () {
 
     links.forEach((item) => {
       item.addEventListener('click', (e) => {
-        if (item.className === 'account') {
+        if (item.className === 'myList') {
           const user = localStorage.getItem('gamesAppUserEmail')
           const token = localStorage.getItem('gamesAppToken')
           item.href += `/${user}/${token}`
@@ -49,3 +50,20 @@ function checkUser () {
     console.error(error)
   }
 })()
+
+const goTopButton = document.getElementById('goTopBtn')
+
+goTopButton.addEventListener('click', topFunction)
+
+function scrollFunction () {
+  if (document.documentElement.scrollTop > 500) {
+    goTopButton.style.display = 'block'
+  } else {
+    goTopButton.style.display = 'none'
+  }
+}
+
+function topFunction () {
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
+}

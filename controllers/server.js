@@ -2,16 +2,16 @@ const express = require('express')
 const helmet = require('helmet')
 var bodyParser = require('body-parser')
 
-const { morganMiddleware } = require('./middlewares/logs.js')
-const { getAllRanking, getComingSoon, getMyList } = require('./db/store')
-const User = require('./db/models/users')
+const { morganMiddleware } = require('./middlewares/logs')
+const { getAllRanking, getComingSoon, getMyList } = require('../models/store')
+const User = require('../models/moongose_models/users')
 const auth = require('./middlewares/auth')
 
 const app = express()
 
 // MIDDLEWARES
 app.use(helmet())
-app.use(morganMiddleware)
+// app.use(morganMiddleware)
 app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -42,10 +42,13 @@ app.get('/coming-soon/:token', auth, (req, res) => {
     .then((data) => res.render('coming-soon', { data }))
 })
 
-app.get('/account/:user/:token', auth, async (req, res) => {
+app.get('/myList/:user/:token', auth, async (req, res) => {
   const { user } = req.params
   getMyList(user)
-    .then((data) => res.render('account', { data }))
+    .then((data) => {
+      console.log(data)
+      res.render('myList', { data })
+    })
 })
 
 // ROUTES : POST
@@ -81,7 +84,7 @@ app.post('/users/saveGame', async (req, res) => {
     if (!user) {
       res.status(401).send({ error: 'User not found' })
     }
-    await user.saveVideogame(videogame)
+    await user.saveVideogameInUser(videogame)
     res.send()
   } catch (err) {
     res.status(400).send(err)

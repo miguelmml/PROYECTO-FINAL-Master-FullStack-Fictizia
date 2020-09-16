@@ -1,20 +1,21 @@
 require('dotenv').config()
-const app = require('./src/server')
+const app = require('./controllers/server')
 
-const { connectionDB, disconnectDB } = require('./src/db/store')
+const { connectionDB, disconnectDB } = require('./models/store')
 
 const port = process.env.PORT
 
-connectionDB()
+app.listen(port, (err) => {
+  if (err) {
+    console.error(`Error to initializing server ${err}`)
+  } else {
+    console.log(`Server running in port ${port}`)
+    connectionDB()
+      .then((data) => console.log(data.msg))
+      .catch((error) => console.error(`Error to connect database ${error}`))
+  }
+})
 
 process.on('SIGINT', function () {
   disconnectDB()
-})
-
-app.listen(port, (err) => {
-  if (err) {
-    console.error(`error to initializing server ${err}`)
-  } else {
-    console.log(`Server running in port ${port}`)
-  }
 })

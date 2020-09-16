@@ -4,9 +4,12 @@ append config
   - currentPage = pages.comingSoon
   - currentDescription = metaDescription.comingSoon
 
+block styles
+  link(href='/static/css/card.css' rel='stylesheet')
 block contentInterface
   .mainContent__interface
-    h2 Coming Soon
+    h2 COMING SOON
+    h3 Next video games in a short time ...
 block content
   .mainContent__data
     - const items = data
