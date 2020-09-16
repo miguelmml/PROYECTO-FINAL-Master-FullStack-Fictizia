@@ -46,9 +46,12 @@ app.get('/myList/:user/:token', auth, async (req, res) => {
   const { user } = req.params
   getMyList(user)
     .then((data) => {
-      console.log(data)
       res.render('myList', { data })
     })
+})
+
+app.get('*', (req, res) => {
+  res.render('404')
 })
 
 // ROUTES : POST

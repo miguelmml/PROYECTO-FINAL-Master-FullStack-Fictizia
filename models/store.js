@@ -63,7 +63,7 @@ const getAllRanking = async (model) => {
 }
 
 const getComingSoon = async () => {
-  const data = await videogameModels.Coming_soon.find().sort({ platform: 1 })
+  const data = await videogameModels.Coming_soon.find().sort({ platform: -1 })
   return data
 }
 

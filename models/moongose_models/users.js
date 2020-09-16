@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     img: String,
     platform: String,
     date: String,
-    description: String,
+    description: { type: String, default: 'No description' },
     score: Number
   }],
   tokens: [{

@@ -14,7 +14,7 @@ html{
 
 body{
   font-family: SofiaProLight;
-  background-color: #0a0a0a;
+  background-color: #03070c;
   color: #ececec;
   overflow-x: hidden;
 }
@@ -131,4 +131,21 @@ button:active{
 .goTopBtn:hover{
   border-color: #ececec;
   background-color: transparent;
+}
+body::-webkit-scrollbar { /*estilos scroll bar*/
+  width: 15px;     
+}
+body::-webkit-scrollbar-thumb {
+  background: #a41c26;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 217, 0);
+}
+body::-webkit-scrollbar-track{
+  background: rgb(39, 39, 39);
+  border-radius: 20px;
+  width: 100px;
+  box-shadow: inset 0 0 5px rgb(12, 12, 12);
 }

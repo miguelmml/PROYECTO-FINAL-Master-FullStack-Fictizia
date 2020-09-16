@@ -54,19 +54,4 @@
   } catch (error) {
     console.error(error)
   }
-})();
-
-(() => {
-  const arr = document.querySelectorAll('.videogameCard__circleWrapper')
-
-  arr.forEach((item) => {
-    item.addEventListener('mouseover', (e) => {
-      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '0'
-      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '0'
-    })
-    item.addEventListener('mouseout', (e) => {
-      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '-100%'
-      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '-100%'
-    })
-  })
 })()

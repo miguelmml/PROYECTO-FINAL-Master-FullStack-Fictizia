@@ -14,7 +14,7 @@ const videogameSchema = new mongoose.Schema({
     trim: true
   },
   date: String,
-  description: String,
+  description: { type: String, default: 'No description' },
   score: Number
 })
 

@@ -37,10 +37,21 @@
         })
         .catch((err) => {
           console.error(err)
-          document.getElementById('infoLogin').textContent = 'Login failed! Check authentication credentials'
+          document.getElementById('infoLogin').textContent = '🚫 Login failed! Check authentication credentials 🚫'
         })
     })
   } catch (error) {
     console.error(error)
   }
+})();
+
+(() => {
+  const loginInputList = document.querySelectorAll('.loginInput')
+
+  loginInputList.forEach(item => {
+    item.addEventListener('focus', () => {
+      console.log('click')
+      document.getElementById('infoLogin').textContent = ''
+    })
+  })
 })()

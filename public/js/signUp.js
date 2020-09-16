@@ -12,7 +12,7 @@
         if (/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(password) && password === passwordCheck) {
           postToSignUp(name, email, password)
         } else {
-          document.getElementById('infoSignUp').textContent = '🚫 Invalid password or asswords do not match 🚫'
+          document.getElementById('infoSignUp').textContent = '🚫 Invalid password or passwords do not match 🚫'
         }
       } else {
         document.getElementById('infoSignUp').textContent = '🚫 Invalid Email 🚫'
@@ -59,3 +59,14 @@ function postToSignUp (name, email, password) {
       document.getElementById('infoSignUp').textContent = 'Sign Up failed! User or email already exists'
     })
 }
+
+(() => {
+  const signUpInputList = document.querySelectorAll('.signUpInput')
+
+  signUpInputList.forEach(item => {
+    item.addEventListener('focus', () => {
+      console.log('click')
+      document.getElementById('infoSignUp').textContent = ''
+    })
+  })
+})()

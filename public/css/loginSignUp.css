@@ -1,12 +1,12 @@
 .loginSignUpContent{
- background-color: #0A0A0A;
+ background-color: #040a16;
  height: 100vh;
  display: flex;
  align-items: center;
 }
 .loginSignUpContent__wrapper{
   border: 1px solid black;
-  box-shadow: 0 6px 10px rgba(58, 57, 57, 0.33);
+  box-shadow: -4px 4px 10px rgba(58, 57, 57, 0.179);
   width: 55%;
   margin: 0 auto;
   display: flex;
@@ -61,7 +61,7 @@
   color: #bf222c;
   font-size: 1.2rem;
 }
-.infoLogin{
+.infoLogin, .infoSignUp{
   height: 1rem;
   margin-top: 1rem;
 }
