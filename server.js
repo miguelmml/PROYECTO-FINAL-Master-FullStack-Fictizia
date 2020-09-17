@@ -2,9 +2,10 @@ require('dotenv').config()
 const app = require('./controllers/app')
 const { connectionDB, disconnectDB } = require('./models/store')
 
-const port = process.env.PORT
+const host = process.env.HOST || '0.0.0.0'
+const port = process.env.PORT || 3000
 
-app.listen(port, (err) => {
+app.listen(port, host, (err) => {
   if (err) {
     console.error(`Error to initializing server ${err}`)
   } else {
