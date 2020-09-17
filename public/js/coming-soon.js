@@ -17,7 +17,7 @@
           }
         }
 
-        fetch('http://localhost:3000/users/saveGame', {
+        fetch('https://morning-bastion-27317.herokuapp.com/users/saveGame', {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {

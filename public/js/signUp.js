@@ -30,7 +30,7 @@ function postToSignUp (name, email, password) {
     password: password
   }
 
-  fetch('http://localhost:3000/users/signUp', {
+  fetch('https://morning-bastion-27317.herokuapp.com/users/signUp', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
