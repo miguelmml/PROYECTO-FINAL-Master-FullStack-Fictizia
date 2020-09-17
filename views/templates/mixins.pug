@@ -1,0 +1,53 @@
+mixin rankingsCard(title, img, platform, date, description, score, rankNumber)
+  .videogameCard__wrapper
+    .videogameCard__descriptionWrapper
+      p.videogameCard__description= `${description}`
+    .videogameCard__circleWrapper
+      .videogameCard__imageWrapper
+        img(src= img class='videogameCard__image')
+      .videogameCard__rankAndButtonWrapper
+        button.btnAddVideogame ADD TO MY LIST
+        h3.videogameCard__rankNumber Rank 
+          span.videogameCard__rankNumber--number=rankNumber
+    .videogameCard__statsWrapper
+      .videogameCard__stats
+        p.videogameCard__title= title
+        p.videogameCard__rankNumber= `Rank: ${rankNumber}`
+        p.videogameCard__score Score: 
+          span.videogameCard__score--number= score
+        p.videogameCard__platform= `Platform: ${platform}`
+        p.videogameCard__date= `Date: ${date}`
+        
+
+mixin comingSoonCard(title, img, platform, date, description)
+  .videogameCard__wrapper
+    .videogameCard__descriptionWrapper
+      p.videogameCard__description= `${description}`
+    .videogameCard__circleWrapper
+      .videogameCard__imageWrapper
+        img(src= img class='videogameCard__image')
+      .videogameCard__rankAndButtonWrapper
+        button.btnAddVideogame ADD TO MY LIST
+        p Coming Soon
+    .videogameCard__statsWrapper
+      .videogameCard__stats
+        p.videogameCard__title= title
+        p.videogameCard__platform= `Platform: ${platform}`
+        p.videogameCard__date= `Date: ${date}`
+
+mixin myListCard(state, title, img, platform, date, description)
+  .videogameCard__wrapper
+      .videogameCard__descriptionWrapper
+        p.videogameCard__description= `${description}`
+      .videogameCard__circleWrapper
+        .videogameCard__imageWrapper
+          img(src= img class='videogameCard__image')
+        .videogameCard__rankAndButtonWrapper
+          button.btnDeleteVideogame DELETE TO MY LIST
+          p Coming Soon
+      .videogameCard__statsWrapper
+        .videogameCard__stats
+          p.videogameCard__title= title
+          p.videogameCard__state= `State: ${state}`
+          p.videogameCard__platform= `Platform: ${platform}`
+          p.videogameCard__date= `Date: ${date}`
