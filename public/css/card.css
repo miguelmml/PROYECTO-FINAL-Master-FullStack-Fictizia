@@ -68,7 +68,7 @@ option{
 }
 .videogameCard__descriptionWrapper, .videogameCard__statsWrapper{
   width: 40%;
-  transition: .3s .1s ease-in-out ;
+  transition: .2s .1s ease-in-out ;
 }
 .videogameCard__description, .videogameCard__stats{
   width: 25rem;

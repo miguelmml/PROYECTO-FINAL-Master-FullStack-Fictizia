@@ -25,7 +25,7 @@ const disconnectDB = () => {
       process.exit(0)
     })
   } catch (error) {
-    console.error('Failed to disconnect database!')
+    console.error('Failed to disconnect database!', error)
   }
 }
 
@@ -57,8 +57,8 @@ const saveVideogame = (model, obj) => {
   })
 }
 
-const getAllRanking = async (model) => {
-  const data = await videogameModels[capitalized(model)].find().sort({ rankNumber: 1 })
+const getAllRanking = (model) => {
+  const data = videogameModels[capitalized(model)].find().sort({ rankNumber: 1 })
   return data
 }
 

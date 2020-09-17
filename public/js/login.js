@@ -50,7 +50,6 @@
 
   loginInputList.forEach(item => {
     item.addEventListener('focus', () => {
-      console.log('click')
       document.getElementById('infoLogin').textContent = ''
     })
   })

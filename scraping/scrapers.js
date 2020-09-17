@@ -2,7 +2,6 @@
 const got = require('got')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
-const { v4: uuidv4 } = require('uuid')
 
 const db = require('../models/store')
 const { downloadImage } = require('./downloadImges')

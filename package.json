@@ -2,13 +2,13 @@
   "name": "proyecto-fin-master-games-rank-app",
   "version": "",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "test": "jest --verbose",
+    "start": "node server.js",
     "scrap": "node scraping/index.js"
   },
   "author": "Miguel Martin-Maestro Lopez",
@@ -34,7 +34,6 @@
     "moment-timezone": "^0.5.31",
     "mongoose": "^5.10.4",
     "morgan": "^1.10.0",
-    "pug": "^3.0.0",
-    "uuid": "^8.3.0"
+    "pug": "^3.0.0"
   }
 }
