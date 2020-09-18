@@ -29,8 +29,13 @@ function postToSignUp (name, email, password) {
     email: email,
     password: password
   }
+  const url = `${window.location.protocol}//${window.location.host}/users/signUp`
 
+<<<<<<< HEAD
   fetch('https://morning-bastion-27317.herokuapp.com/users/signUp', {
+=======
+  fetch(url, {
+>>>>>>> develop
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -65,7 +70,6 @@ function postToSignUp (name, email, password) {
 
   signUpInputList.forEach(item => {
     item.addEventListener('focus', () => {
-      console.log('click')
       document.getElementById('infoSignUp').textContent = ''
     })
   })

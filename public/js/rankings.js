@@ -33,7 +33,13 @@
           }
         }
 
+<<<<<<< HEAD
         fetch('https://morning-bastion-27317.herokuapp.com/users/saveGame', {
+=======
+        const url = `${window.location.protocol}//${window.location.host}/users/saveGame`
+
+        fetch(url, {
+>>>>>>> develop
           method: 'POST',
           body: JSON.stringify(data),
           headers: {

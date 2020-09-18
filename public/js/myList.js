@@ -12,7 +12,13 @@
           videogamePlatform: e.target.parentElement.parentElement.parentElement.querySelector('.videogameCard__platform').textContent
         }
 
+<<<<<<< HEAD
         fetch('https://morning-bastion-27317.herokuapp.com/users/deleteGame', {
+=======
+        const url = `${window.location.protocol}//${window.location.host}/users/deleteGame`
+
+        fetch(url, {
+>>>>>>> develop
           method: 'POST',
           body: JSON.stringify(data),
           headers: {

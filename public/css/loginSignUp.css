@@ -32,9 +32,7 @@
   background-color: #122529;
   width: 60%;
   padding: 4%;
-  
 }
-
 .loginSignUpContent__interface *{
   display: block;
   text-align: center;
@@ -43,23 +41,24 @@
   align-self: flex-end;
 }
 .loginSignUpContent__interface input{
-  height: 1.7rem;
-  width: 50%;
+  height: 2rem;
+  width: 65%;
   text-align: start;
-  padding-left: 1%;
+  padding-left: 4%;
   border: none;
-  border-bottom: 2px solid #b61f29;
+  border-bottom: 1px solid #b61f29;
   background-color: #0c191ca6;
   color: #ececec;
+  box-sizing: border-box
 }
 #btnLogin, #btnSignUp{
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 .linkSignUp{
   margin-top: 1rem;
   color: #bf222c;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .infoLogin, .infoSignUp{
   height: 1rem;

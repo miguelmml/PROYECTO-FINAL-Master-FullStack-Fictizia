@@ -11,7 +11,13 @@
         password: password
       }
 
+<<<<<<< HEAD
       fetch('https://morning-bastion-27317.herokuapp.com/users/login', {
+=======
+      const url = `${window.location.protocol}//${window.location.host}/users/login`
+
+      fetch(url, {
+>>>>>>> develop
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
