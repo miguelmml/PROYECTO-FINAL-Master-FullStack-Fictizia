@@ -33,7 +33,9 @@
           }
         }
 
-        fetch('http://localhost:3000/users/saveGame', {
+        const url = `${window.location.protocol}//${window.location.host}/users/saveGame`
+
+        fetch(url, {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {

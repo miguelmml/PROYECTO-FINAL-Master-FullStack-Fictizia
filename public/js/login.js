@@ -11,7 +11,9 @@
         password: password
       }
 
-      fetch('http://localhost:3000/users/login', {
+      const url = `${window.location.protocol}//${window.location.host}/users/login`
+
+      fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

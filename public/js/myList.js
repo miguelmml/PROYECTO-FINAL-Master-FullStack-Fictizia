@@ -12,7 +12,9 @@
           videogamePlatform: e.target.parentElement.parentElement.parentElement.querySelector('.videogameCard__platform').textContent
         }
 
-        fetch('http://localhost:3000/users/deleteGame', {
+        const url = `${window.location.protocol}//${window.location.host}/users/deleteGame`
+
+        fetch(url, {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {
