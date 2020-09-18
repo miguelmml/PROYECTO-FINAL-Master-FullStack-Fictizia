@@ -1,6 +1,6 @@
 # Proyecto final del Master
 
-## Vieogame Rankings - Front-end, Back-end, SSR, Node.js, Express, MongoDB, JWT Auth, Pug, Heroku
+## Vieogame Rankings - Front-end, Back-end, SSR, Node.js, Express, MongoDB, Scraping, JWT Auth, Pug, Heroku
 
 Aplicación para obtener el top 100 de videojuegos de las distintas plataformas, enterarse de próximos lanzamientos y guardarlos en tu lista de preferncias. 🙂
 
