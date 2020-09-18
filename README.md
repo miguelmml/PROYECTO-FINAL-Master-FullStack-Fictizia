@@ -1,8 +1,12 @@
 # Proyecto final del Master
 
-## GamesRanksAPP - Front-end, Back-end, Node.js, Express, MongoDB, Firebase ... 
+## Vieogame Rankings - Front-end, Back-end, SSR, Node.js, Express, MongoDB, Scraping, JWT Auth, Pug, Heroku
 
-Aplicación para consultar información acerca de videojuegos, como obtener las listas de los juegos más jugados o mejor valorados, crear tus propias listas de juegos jugados o que te gustaria jugar, compartir con otros usuarios, estar al dia de proximos lanzamientos y más.
+Aplicación para obtener el top 100 de videojuegos de las distintas plataformas, enterarse de próximos lanzamientos y guardarlos en tu lista de preferncias. 🙂
+
+## Deploy en Heroku 🚀 [LINK](https://morning-bastion-27317.herokuapp.com/) 🚀
+
+![web snapshoot](./assets/videogameRankings.png)
 
 ## Requisitos
 
