@@ -31,11 +31,7 @@ function postToSignUp (name, email, password) {
   }
   const url = `${window.location.protocol}//${window.location.host}/users/signUp`
 
-<<<<<<< HEAD
-  fetch('https://morning-bastion-27317.herokuapp.com/users/signUp', {
-=======
   fetch(url, {
->>>>>>> develop
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
